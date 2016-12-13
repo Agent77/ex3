@@ -22,8 +22,10 @@ public:
     int getId();
     int getMeters();
     int getNumOfPassengers();
-    int getTariff();
+    double getTariff();
     void addMeters(){};
+    Coordinate* getStart();
+    Coordinate* getEnd();
 
 };
 

@@ -45,7 +45,7 @@ void TaxiCenter::requestDriverLocation(int driverId){
     while((*(iter)).getId() != driverId) {
         iter++;
     }
-    cout<<"("<<(*(iter)).getTrip().getX()<<","<<(*(iter)).getTrip().getX()<<")"<<endl;
+    cout<<(*(iter)).getTrip().getStart()<<endl;
 }
 
 int TaxiCenter::assignDrivers() {
