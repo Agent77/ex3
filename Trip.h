@@ -6,24 +6,23 @@ class Trip {
 
 private:
 
-    int rideID;
-    int metersPassed;
+    int tripId;
+    int xStart;
+    int yStart;
+    int xEnd;
+    int yEnd;
     int numOfPassengers;
-    int tariff;
-    Point source;
-    Point destination;
+    int metersPassed;
+    double tariff;
 
 public:
     Trip();
-    Trip(Point s, Point d);
-    Trip(int id, int xStart, int yStart, int xEnd, int yEnd, int numPassengers, double tariff);
+    Trip(int tripId, int xStart, int yStart, int xEnd, int yEnd, int numOfPassengers, double tariff);
     ~Trip();
     int getId();
     int getMeters();
     int getNumOfPassengers();
     int getTariff();
-    Point getSource();
-    Point getDest();
     void addMeters(){};
 
 };

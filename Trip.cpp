@@ -5,8 +5,14 @@ Trip::Trip() {
 
 }
 
-Trip::Trip(Point s, Point d) {
-
+Trip::Trip(int tripId, int xStart, int yStart, int xEnd, int yEnd, int numOfPassengers, double tariff) {
+    this->tripId=tripId;
+    this->xStart=xStart;
+    this->yStart=yStart;
+    this->xEnd=xEnd;
+    this->yEnd=yEnd;
+    this->numOfPassengers=numOfPassengers;
+    this->tariff=tariff;
 }
 
 Trip::~Trip() {
