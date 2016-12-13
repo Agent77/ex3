@@ -4,7 +4,7 @@ Driver::Driver() {
 
 }
 
-Driver::Driver(int id, int age, char mStatus, int id, int exp, int carId ) {
+Driver::Driver(int driverId, int age, char mStatus, int vehicleId, int exp) {
 
 }
 

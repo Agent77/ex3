@@ -16,7 +16,7 @@ private:
 public:
     Driver();
     ~Driver();
-    Driver(int id, int age, char mStatus, int id, int exp, int carId );
+    Driver(int driverId, int age, char mStatus, int vehicleId, int exp);
     int getAge();
     int getId();
     int getSatisfaction();

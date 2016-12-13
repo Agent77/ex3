@@ -16,7 +16,7 @@ private:
 public:
     Trip();
     Trip(Point s, Point d);
-    Trip(int id, int xStart, int yStart, int xEnd, int yEnd, int numPassengers, double tarrif);
+    Trip(int id, int xStart, int yStart, int xEnd, int yEnd, int numPassengers, double tariff);
     ~Trip();
     int getId();
     int getMeters();

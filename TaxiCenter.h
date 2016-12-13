@@ -12,13 +12,12 @@
 
 class TaxiCenter {
 private:
-    Driver drivers[10];
+    std::vector <Driver> drivers;
     Point* locations;
-    Trip trips[10];
+    std::vector <Trip> trips;
 public:
     TaxiCenter();
-    Driver findDriver(Trip t);
-    Trip createTrip(Passenger p);
+    Driver findClosestDriver(Trip t);
     void setLocation(int index, Point location);
     void setTaxiLocations(Point p[]);
     void addTrip(Passenger p);
@@ -26,6 +25,10 @@ public:
     int checkDestinations();
     Point* getLocations() { return locations;}
     Trip* getTrips(){ return trips;};
+    void addDriver(int driverId, int age, char mStatus, int id, int exp, int carId);
+    void addTrip(int tripId, int xStart, int yStart, int xEnd, int yEnd,
+                 int numPassengers, double tariff);
+    void requestDriverLocation(int driverId);
 
 };
 
