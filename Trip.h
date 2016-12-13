@@ -23,7 +23,7 @@ public:
     int getMeters();
     int getNumOfPassengers();
     double getTariff();
-    void addMeters(){};
+    void addMeters();
     Coordinate* getStart();
     Coordinate* getEnd();
     void updateStartPoint(Coordinate *c);

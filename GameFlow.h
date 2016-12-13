@@ -1,7 +1,8 @@
-//
-// Created by Tiki Lobel on 12/1/16.
-//
-
+#include "City.h"
+#include "Driver.h"
+#include "Trip.h"
+#include "Graph.h"
+#include "Coordinate.h"
 #ifndef EX2_GAMEFLOW_H
 #define EX2_GAMEFLOW_H
 
@@ -13,6 +14,11 @@ public:
     GameFlow();
     void doOneFrame();
     void run();
+    void initialize();
+    Driver createDriver(string s);
+    Trip createTrip(string s);
+    Graph* createGraph(string s);
+    Coordinate* createCoordinate(string obstacleLocation);
 };
 
 

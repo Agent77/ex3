@@ -23,7 +23,7 @@ public:
     void addDriver(int driverId, int age, char mStatus, int vehicleId, int exp);
         void setLocation(int index, Point location);
     void setTaxiLocations(Point p[]);
-    void addTrip(Passenger p);
+    void addTrip(Trip t);
     void addDriver(Driver d);
     void updateMeters();
     int checkDestinations();

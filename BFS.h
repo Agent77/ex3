@@ -18,8 +18,6 @@ using namespace std;
 class BFS {
 private:
     std::queue<Node*> myDeque;
-    int xsize;
-    int ysize;
     Node* source;
     Graph* graph;
     Node* destination;
@@ -27,7 +25,7 @@ private:
 public:
     BFS(){};
     ~BFS();
-    BFS(Graph* g, int x, int y, Coordinate* source, Coordinate* destination);
+    BFS(Graph* g);
     void getPath();
     void PrintPath(Node* s, Node* d);
     std::vector<Node*> visitNeighbors(Node* n);

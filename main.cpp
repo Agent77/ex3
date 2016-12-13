@@ -8,52 +8,53 @@
 #include <iostream>
 #include "Point.h"
 #include "BFS.h"
+#include "Driver.h"
+#include "City.h"
+#include "TaxiCenter.h"
+#include <boost/lexical_cast.hpp>
+#include <boost/tokenizer.hpp>
+#include "GameFlow.h"
+typedef boost::tokenizer<boost::char_separator<char>> tokenizer;
+
+
+
 
 using namespace std;
 int toInt(char* s);
 
 int main() {
+    GameFlow gf = GameFlow();
+    gf.initialize();
+    gf.run();
+}
 
-    int variables[7];
-    char * input = new char();
-    cin>>input;
-    input = strtok(input, "_");
-    for (int i = 0; i < 6; i++) {
-        if (input != NULL) {
-            variables[i] = toInt(input);
-        }
-        //Goes to next place where there is a '_' and splits
-        if (input != NULL) {
-            input = strtok(NULL, "_,");
-        }
-    }
-    Point start = Point(1,3);
-    Point end = Point(4,4);
+//int size[2];
+//int i = 0;
+/*boost::char_separator<char> sep{" "};
+tokenizer tok{s, sep};
+for (const auto &t : tok) {
+    size[i] = boost::lexical_cast<int>(t);
+    i++;
+}*/
+
+/*
+    Point start = Point(1,1);
+    Point end = Point(2,3);
+    //Coordinate* obs = new Point(1,2);
+    //Coordinate* obs2 = new Point(2,2);
     Graph* graphPointer;
     //sizes sent to grid
-    Grid g = Grid(6,6);
+    Grid g = Grid(4,4);
     graphPointer = &g;
     BFS* bfs = new BFS(graphPointer, 6, 6, &start, &end);
+    //bfs->addObstacles(obs);
+    //bfs->addObstacles(obs2);
     bfs->getPath();
     delete bfs;
-    delete input;
-    return 0;
-}
+    return 0;*/
+
 
 /*
  * converts the char to an int.
  */
-int toInt(char* s) {
-    //Could be 10
-    if(*s - 48 == 1) {
-        s++;
-        if(*s - 48 == 0) {
-            return 10;
-        }
-        else {
-            return 1;
-        }
-    }
-    return *s - 48;
-}
 

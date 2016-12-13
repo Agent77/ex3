@@ -8,5 +8,5 @@ set(Boost_Path "/Users/Tiki/Downloads/boost_1_62_0")
 
 set(Boost_INCLUDE_DIR "${Boost_Path}/boost_1_62_0")
 
-set(SOURCE_FILES main.cpp BFS.cpp Graph.cpp Grid.cpp TaxiCenter.cpp Point.cpp Taxi.cpp Coordinate.cpp Driver.cpp Node.cpp Passenger.cpp Trip.cpp)
+set(SOURCE_FILES main.cpp BFS.cpp Graph.cpp Grid.cpp GameFlow.cpp TaxiCenter.cpp Point.cpp Taxi.cpp Coordinate.cpp Driver.cpp Node.cpp Passenger.cpp Trip.cpp)
 add_executable(ex3 ${SOURCE_FILES})

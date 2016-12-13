@@ -9,13 +9,11 @@ using namespace std;
  */
 
 
-BFS::BFS(Graph* g, int x, int y, Coordinate* sLoc, Coordinate* dLoc) {
-    xsize = x;
-    ysize = y;
-    this->source =  g->getNode(sLoc);
+BFS::BFS(Graph* g) {
+    //this->source =  g->getNode(sLoc);
     (*(source)).visit();
     (*(source)).setPrev(*source);
-    this->destination = g->getNode(dLoc);
+    //this->destination = g->getNode(dLoc);
     this->graph = g;
 }
 /*

@@ -13,13 +13,12 @@ private:
     TaxiCenter tc;
     BFS* map;
 public:
+    City(BFS* map);
     City();
     void move ();
     void CallTaxiCenter(Passenger p);
     Passenger checkForPassengerCalls();
     TaxiCenter getTaxiCenter() {};
-    void startTraffic();
-    //TODO HAS OBSTACLES
 };
 
 
