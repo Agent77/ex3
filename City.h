@@ -17,6 +17,8 @@ public:
     void CallTaxiCenter(Passenger p);
     Passenger checkForPassengerCalls();
     TaxiCenter getTaxiCenter() {};
+    void startTraffic();
+    //TODO HAS OBSTACLES
 };
 
 
