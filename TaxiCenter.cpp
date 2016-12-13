@@ -42,7 +42,7 @@ void TaxiCenter::addDriver(int driverId, int age, char mStatus, int vehicleId, i
 
 void TaxiCenter::requestDriverLocation(int driverId){
     vector<Driver>::iterator iter = drivers.begin();
-    while((*(iter)).getId() != driverId) {
+    while((*(iter)).getDriverId() != driverId) {
         iter++;
     }
     cout<<(*(iter)).getTrip().getStart()<<endl;
@@ -59,4 +59,8 @@ int TaxiCenter::assignDrivers() {
         count++;
     }
     return count;
+}
+
+vector <Driver> TaxiCenter::getDrivers (){
+    return drivers;
 }

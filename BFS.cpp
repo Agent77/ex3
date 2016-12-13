@@ -100,3 +100,14 @@ Node* BFS::getDest() {
 Node* BFS::getSource() {
     return source;
 }
+
+Coordinate* BFS::getNextInPath(Coordinate* sLoc, Coordinate* dLoc){
+    this->source =  graph->getNode(sLoc);
+    this->destination = graph->getNode(dLoc);
+    this->getPath();
+    Node *node= getDest();
+    while (node->getPrev()!=getSource()){
+        node=node->getPrev();
+    }
+    return node->getMyLocation();
+}

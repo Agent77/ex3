@@ -34,6 +34,7 @@ public:
                  int numPassengers, double tariff);
     void requestDriverLocation(int driverId);
     int assignDrivers();
+    vector <Driver> getDrivers ();
 
 };
 

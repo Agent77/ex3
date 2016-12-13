@@ -12,7 +12,7 @@ Passenger City::checkForPassengerCalls() {
 
 }
 
-void City::startTraffic() {
+/*void City::startTraffic() {
     int driverCount = tc.assignDrivers();
     std::vector<Trip>::iterator trip = tc.getTrips().begin();
     //loop
@@ -20,4 +20,15 @@ void City::startTraffic() {
         //(*(trip)).getStart()
     }
     map.getpath();
+}*/
+
+void City::move() {
+    int driverCount = tc.assignDrivers();
+    std::vector<Driver> currentDrivers = tc.getDrivers();
+    vector<Driver>::iterator it = tc.getDrivers().begin();
+    while (it!=tc.getDrivers().end()){
+        Coordinate* c = map->getNextInPath((*(it)).getTrip().getStart(),(*(it)).getTrip().getEnd());
+        (*(it)).getTrip().updateStartPoint(c);
+    }
+
 }

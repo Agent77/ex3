@@ -1,28 +1,33 @@
 #ifndef EX2_DRIVER_H
 #define EX2_DRIVER_H
 
+#include <vector>
 #include "Trip.h"
 #include "Passenger.h"
 #include "Taxi.h"
 class Driver {
 private:
-    int driverID;
+    int driverId;
     int age;
+    int numberOfcustomers;
+    int vehicleId;
+    int exp;
+    double totalRate;
     double avgSatisfaction;
     string maritalStatus;
     Taxi taxi;
     Trip myTrip;
-    Passenger myPassengers[10];
+    std::vector <Passenger> myPassengers;
 public:
     Driver();
     ~Driver();
     Driver(int driverId, int age, char mStatus, int vehicleId, int exp);
     int getAge();
-    int getId();
-    int getSatisfaction();
+    int getDriverId();
+    double getSatisfaction();
     Taxi getTaxi();
     Trip getTrip();
-    Passenger* getPassengers();
+    vector <Passenger> getPassengers();
     string getMaritalStatus();
     void setTaxi(Taxi t);
     void setTrip(Trip t);

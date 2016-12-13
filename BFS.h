@@ -33,6 +33,7 @@ public:
     std::vector<Node*> visitNeighbors(Node* n);
     Node* getDest();
     Node* getSource();
+    Coordinate* getNextInPath(Coordinate* sLoc, Coordinate* dLoc);
 
 };
 

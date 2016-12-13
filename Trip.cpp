@@ -46,3 +46,8 @@ Coordinate* Trip::getEnd() {
 void Trip::addMeters() {
     metersPassed =+1;
 }
+
+void Trip::updateStartPoint(Coordinate *c){
+    xStart= c->getX();
+    yStart=c->getY();
+}

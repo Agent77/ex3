@@ -14,6 +14,7 @@ private:
     BFS* map;
 public:
     City();
+    void move ();
     void CallTaxiCenter(Passenger p);
     Passenger checkForPassengerCalls();
     TaxiCenter getTaxiCenter() {};

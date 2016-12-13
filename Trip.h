@@ -26,6 +26,7 @@ public:
     void addMeters(){};
     Coordinate* getStart();
     Coordinate* getEnd();
+    void updateStartPoint(Coordinate *c);
 
 };
 
