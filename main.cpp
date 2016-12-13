@@ -16,11 +16,7 @@
 #include "GameFlow.h"
 typedef boost::tokenizer<boost::char_separator<char>> tokenizer;
 
-
-
-
 using namespace std;
-int toInt(char* s);
 
 int main() {
     GameFlow gf = GameFlow();
