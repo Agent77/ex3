@@ -20,25 +20,29 @@ Trip::~Trip() {
 }
 
 int Trip::getId() {
-
+    return tripId;
 }
 
 int Trip::getMeters() {
-
+    return metersPassed;
 }
 
 int Trip::getNumOfPassengers() {
-
+    return numOfPassengers;
 }
 
-int Trip::getTariff() {
-
+double Trip::getTariff() {
+    return tariff;
+}
+Coordinate* Trip::getStart() {
+    Coordinate* start = new Point(xStart, yStart);
+    return start;
+}
+Coordinate* Trip::getEnd() {
+    Coordinate* end = new Point(xEnd, yEnd);
+    return end;
 }
 
-Point Trip::getSource() {
-
-}
-
-Point Trip::getDest() {
-
+void Trip::addMeters() {
+    metersPassed =+1;
 }

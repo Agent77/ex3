@@ -1,6 +1,3 @@
-//
-// Created by Tiki Lobel on 11/29/16.
-//
 
 #include "TaxiCenter.h"
 #include "Driver.h"
@@ -13,14 +10,18 @@ Driver TaxiCenter::findClosestDriver(Trip t) {
 
 }
 
+void TaxiCenter::addDriver(Driver d) {
+
+}
+
 void TaxiCenter::setTaxiLocations(Point p[]) {
        locations = p;
 }
 
 void TaxiCenter::addTrip(int tripId, int xStart, int yStart, int xEnd, int yEnd,
                          int numPassengers, double tariff) {
-    Trip trip = new Trip (tripId, xStart, yStart,xEnd,yEnd,numPassengers,tariff);
-    trips.push_back(trip);
+    Trip* trip = new Trip (tripId, xStart, yStart,xEnd,yEnd,numPassengers,tariff);
+    trips.push_back(*trip);
 }
 
 void TaxiCenter::updateMeters() {
@@ -35,10 +36,27 @@ void TaxiCenter::setLocation(int index, Point location) {
 }
 
 void TaxiCenter::addDriver(int driverId, int age, char mStatus, int vehicleId, int exp) {
-    Driver driver = new Driver (driverId, age, mStatus, vehicleId, exp);
-    drivers.push_back(driver);
+    Driver* driver = new Driver (driverId, age, mStatus, vehicleId, exp);
+    drivers.push_back(*driver);
 }
 
 void TaxiCenter::requestDriverLocation(int driverId){
+    vector<Driver>::iterator iter = drivers.begin();
+    while((*(iter)).getId() != driverId) {
+        iter++;
+    }
+    cout<<"("<<(*(iter)).getTrip().getX()<<","<<(*(iter)).getTrip().getX()<<")"<<endl;
+}
 
+int TaxiCenter::assignDrivers() {
+    int count = 0;
+    vector<Driver>::iterator driver = drivers.begin();
+    vector<Trip>::iterator trip = trips.begin();
+    while(driver != drivers.end()) {
+        (*(driver)).setTrip((*(trip)));
+        driver++;
+        trip++;
+        count++;
+    }
+    return count;
 }
