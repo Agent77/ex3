@@ -3,9 +3,11 @@
 #define EX2_TAXI_H
 
 #include <string>
+#include "BFS.h"
 
 class Taxi {
 private:
+    BFS* gps;
     int cabId;
     int kmPassed;
     int manufacturer;

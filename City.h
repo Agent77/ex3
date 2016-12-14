@@ -11,7 +11,6 @@
 class City {
 private:
     TaxiCenter tc;
-    BFS* map;
 public:
     City(BFS* map);
     City();

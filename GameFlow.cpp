@@ -29,7 +29,6 @@ void GameFlow::initialize() {
     this->city = City(bfs);
 }
 
-
 void GameFlow::run() {
     int run = 1;
     int action;
@@ -39,7 +38,8 @@ void GameFlow::run() {
 
     while (run) {
         cin >> action;
-        switch (action) {
+        int d = boost::lexical_cast<int>(action);
+        switch(d) {
             case 1: //Insert Driver
                 cin >> s;
                 Driver d = createDriver(s);
@@ -51,6 +51,8 @@ void GameFlow::run() {
                 tc.addTrip(t);
                 break;
             case 3:
+                //Create vehicle
+                //Sending vehicle to matching driver (as taxi)
                 break;
             case 4:
                 cin>>driverId;

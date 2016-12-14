@@ -15,13 +15,14 @@ private:
     double totalRate;
     double avgSatisfaction;
     string maritalStatus;
+    Graph* gps;
     Taxi taxi;
     Trip myTrip;
     std::vector <Passenger> myPassengers;
 public:
     Driver();
     ~Driver();
-    Driver(int driverId, int age, char mStatus, int vehicleId, int exp);
+    Driver(int driverId, int age, char mStatus, int vehicleId, int exp, Graph* gps);
     int getAge();
     int getDriverId();
     double getSatisfaction();
@@ -33,6 +34,7 @@ public:
     void setTrip(Trip t);
     void rateMe(int rating);
     void addPassenger(Passenger p);
+    void drive(); //TODO update trip at end
 
 
 

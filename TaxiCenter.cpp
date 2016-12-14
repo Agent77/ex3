@@ -48,7 +48,7 @@ void TaxiCenter::requestDriverLocation(int driverId){
     cout<<(*(iter)).getTrip().getStart()<<endl;
 }
 
-int TaxiCenter::assignDrivers() {
+int TaxiCenter::assignDrivers() { //TODO also match up taxis to drivers
     int count = 0;
     vector<Driver>::iterator driver = drivers.begin();
     vector<Trip>::iterator trip = trips.begin();

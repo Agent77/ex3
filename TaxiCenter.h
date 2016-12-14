@@ -15,12 +15,14 @@ using namespace std;
 class TaxiCenter {
 private:
     std::vector<Driver> drivers;
+    std::vector<Taxi> taxis;
     Point* locations;
     std::vector<Trip> trips;
+    Graph* map;
 public:
     TaxiCenter();
     Driver findClosestDriver(Trip t);
-    void addDriver(int driverId, int age, char mStatus, int vehicleId, int exp);
+    void addDriver(int driverId, int age, char mStatus, int vehicleId, int exp, Graph* map);
         void setLocation(int index, Point location);
     void setTaxiLocations(Point p[]);
     void addTrip(Trip t);
@@ -34,7 +36,8 @@ public:
                  int numPassengers, double tariff);
     void requestDriverLocation(int driverId);
     int assignDrivers();
-    vector <Driver> getDrivers ();
+    vector <Driver> getDrivers();
+    void driveAll();
 
 };
 
