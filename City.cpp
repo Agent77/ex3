@@ -3,7 +3,7 @@ City::City() {
 
 }
 City::City(BFS* map) {
-    this->map = map;
+//    this->map = map;
 }
 void City::CallTaxiCenter(Passenger p) {
 
@@ -22,7 +22,7 @@ Passenger City::checkForPassengerCalls() {
     map.getpath();
 }*/
 
-void City::move() {
+/*void City::move() {
     int driverCount = tc.assignDrivers();
     std::vector<Driver> currentDrivers = tc.getDrivers();
     vector<Driver>::iterator it = tc.getDrivers().begin();
@@ -31,4 +31,4 @@ void City::move() {
         (*(it)).getTrip().updateStartPoint(c);
     }
 
-}
+}*/

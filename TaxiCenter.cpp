@@ -11,7 +11,8 @@ Driver TaxiCenter::findClosestDriver(Trip t) {
 }
 
 void TaxiCenter::addDriver(Driver d) {
-
+    addDriver(d.getDriverId(), d.getAge(), d.getMaritalStatus(), d.getvehicleId(), 0);
+            //driverId, int age, char mStatus, int vehicleId, int exp
 }
 
 void TaxiCenter::setTaxiLocations(Point p[]) {
@@ -36,7 +37,7 @@ void TaxiCenter::setLocation(int index, Point location) {
 }
 
 void TaxiCenter::addDriver(int driverId, int age, char mStatus, int vehicleId, int exp) {
-    Driver* driver = new Driver (driverId, age, mStatus, vehicleId, exp);
+    Driver* driver = new Driver (driverId, age, mStatus, vehicleId, exp, map);
     drivers.push_back(*driver);
 }
 
@@ -48,19 +49,44 @@ void TaxiCenter::requestDriverLocation(int driverId){
     cout<<(*(iter)).getTrip().getStart()<<endl;
 }
 
-int TaxiCenter::assignDrivers() { //TODO also match up taxis to drivers
+int TaxiCenter::assignDrivers() {
     int count = 0;
+
+    //Assign taxi to driver according to....
+    vector<Taxi>::iterator taxi = taxis.begin();
     vector<Driver>::iterator driver = drivers.begin();
+
+    while(taxi != taxis.end()) {
+        Taxi currentTaxi = *taxi;
+        while((*(driver)).getvehicleId() != (*(taxi)).getId()) {
+            driver++;
+        }
+        Driver driverMatch = *driver;
+        driverMatch.setTaxi(*taxi);
+        taxi++;
+    }
+    taxis.clear();
+
+    vector<Driver>::iterator driverList = drivers.begin();
     vector<Trip>::iterator trip = trips.begin();
-    while(driver != drivers.end()) {
-        (*(driver)).setTrip((*(trip)));
-        driver++;
+    while(driverList != drivers.end() && trip != trips.end()) {
+        (*(driverList)).setTrip((*(trip)));
+        driverList++;
         trip++;
         count++;
     }
+    trips.clear();
     return count;
 }
 
 vector <Driver> TaxiCenter::getDrivers (){
     return drivers;
+}
+
+void TaxiCenter::driveAll() {
+    assignDrivers();
+    vector<Driver>::iterator currentDriver = drivers.begin();
+    while(currentDriver != drivers.end()) {
+        (*(currentDriver)).drive();
+    }
 }

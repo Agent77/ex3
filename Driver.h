@@ -14,7 +14,7 @@ private:
     int exp;
     double totalRate;
     double avgSatisfaction;
-    string maritalStatus;
+    char maritalStatus;
     Graph* gps;
     Taxi taxi;
     Trip myTrip;
@@ -23,13 +23,15 @@ public:
     Driver();
     ~Driver();
     Driver(int driverId, int age, char mStatus, int vehicleId, int exp, Graph* gps);
+    Driver(int driverId, int age, char mStatus, int vehicleId, int exp);
     int getAge();
+    int getvehicleId() { return vehicleId;};
     int getDriverId();
     double getSatisfaction();
     Taxi getTaxi();
     Trip getTrip();
     vector <Passenger> getPassengers();
-    string getMaritalStatus();
+    char getMaritalStatus();
     void setTaxi(Taxi t);
     void setTrip(Trip t);
     void rateMe(int rating);

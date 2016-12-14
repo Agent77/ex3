@@ -22,16 +22,18 @@ private:
 public:
     TaxiCenter();
     Driver findClosestDriver(Trip t);
-    void addDriver(int driverId, int age, char mStatus, int vehicleId, int exp, Graph* map);
+    void addDriver(int driverId, int age, char mStatus, int vehicleId, int exp);
         void setLocation(int index, Point location);
     void setTaxiLocations(Point p[]);
-    void addTrip(Trip t);
+    void addTrip(Trip t) {
+        trips.push_back(t);
+    };
     void addDriver(Driver d);
     void updateMeters();
     int checkDestinations();
     Point* getLocations() { return locations;}
     vector<Trip> getTrips(){ return trips;};
-    void addDriver(int driverId, int age, char mStatus, int id, int exp, int carId);
+    //void addDriver(int driverId, int age, char mStatus, int id, int exp, int carId, Graph* map);
     void addTrip(int tripId, int xStart, int yStart, int xEnd, int yEnd,
                  int numPassengers, double tariff);
     void requestDriverLocation(int driverId);

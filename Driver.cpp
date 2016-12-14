@@ -4,6 +4,16 @@ Driver::Driver() {
 
 }
 
+Driver::Driver(int driverId, int age, char mStatus, int vehicleId, int exp, Graph* map) {
+    numberOfcustomers=0;
+    this->driverId=driverId;
+    this->age=age;
+    this->maritalStatus=mStatus;
+    this->vehicleId=vehicleId;
+    this->exp=exp;
+    this->gps = map;
+}
+
 Driver::Driver(int driverId, int age, char mStatus, int vehicleId, int exp) {
     numberOfcustomers=0;
     this->driverId=driverId;
@@ -12,6 +22,13 @@ Driver::Driver(int driverId, int age, char mStatus, int vehicleId, int exp) {
     this->vehicleId=vehicleId;
     this->exp=exp;
 }
+
+void Driver::drive() {
+    BFS bfs = BFS(gps);
+    Coordinate* c = bfs.getNextInPath(myTrip.getStart(), myTrip.getEnd());
+    myTrip.updateStartPoint(c);
+}
+
 
 int Driver::getAge() {
     return age;
@@ -37,7 +54,7 @@ vector<Passenger> Driver::getPassengers() {
     return myPassengers;
 }
 
-string Driver::getMaritalStatus() {
+char Driver::getMaritalStatus() {
     return maritalStatus;
 }
 

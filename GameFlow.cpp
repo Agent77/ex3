@@ -31,36 +31,42 @@ void GameFlow::initialize() {
 
 void GameFlow::run() {
     int run = 1;
-    int action;
+    int action1;
     int driverId;
     std::string s;
     TaxiCenter tc = city.getTaxiCenter();
 
     while (run) {
-        cin >> action;
-        int d = boost::lexical_cast<int>(action);
-        switch(d) {
+        cin >> action1;
+        int action = boost::lexical_cast<int>(action1);
+        switch(action) {
             case 1: //Insert Driver
+            {
                 cin >> s;
                 Driver d = createDriver(s);
                 tc.addDriver(d);
                 break;
-            case 2:
+            }
+            case 2: {
                 cin >> s;
                 Trip t = createTrip(s);
                 tc.addTrip(t);
                 break;
-            case 3:
+            }
+            case 3: {
                 //Create vehicle
                 //Sending vehicle to matching driver (as taxi)
                 break;
-            case 4:
-                cin>>driverId;
+            }
+            case 4: {
+                cin >> driverId;
                 tc.requestDriverLocation(driverId);
                 break;
-            case 6:
-                //move all
+            }
+            case 6: {
+                tc.driveAll();
                 break;
+            }
             case 7:
                 run = 0;
                 break;
@@ -71,7 +77,7 @@ void GameFlow::run() {
 }
 
 
-Driver createDriver(string s) {
+Driver GameFlow::createDriver(string s) {
     int info[6];
     string status;
     int i = 0;
@@ -92,7 +98,7 @@ Driver createDriver(string s) {
 }
 
 
-Trip createTrip(string s) {
+Trip GameFlow::createTrip(string s) {
     //7 ints
     int i = 0;
     int place = 0;
@@ -107,14 +113,14 @@ Trip createTrip(string s) {
     return trip;
 }
 
-Coordinate* createCoordinate(string s) {
+Coordinate* GameFlow::createCoordinate(string s) {
     int x = s[0];
     int y = s[2];
     Coordinate* point = new Point(x, y);
     return point;
 }
 
-Graph* createGraph(string s) {
+Graph* GameFlow::createGraph(string s) {
     int x = boost::lexical_cast<int>(s[0]);
     int y = boost::lexical_cast<int>(s[2]);
     Graph *graphPointer = new Grid(x, y);

@@ -48,6 +48,6 @@ void Trip::addMeters() {
 }
 
 void Trip::updateStartPoint(Coordinate *c){
-    xStart= c->getX();
-    yStart=c->getY();
+    xStart= c->getNextCoordinate(0);
+    yStart=c->getNextCoordinate(1);
 }
