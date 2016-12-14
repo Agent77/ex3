@@ -4,7 +4,7 @@ Driver::Driver() {
 
 }
 
-Driver::Driver(int driverId, int age, char mStatus, int vehicleId, int exp, Graph* map) {
+Driver::Driver(int driverId, int age, char mStatus, int exp, int vehicleId, Graph* map) {
     numberOfcustomers=0;
     this->driverId=driverId;
     this->age=age;
@@ -14,7 +14,7 @@ Driver::Driver(int driverId, int age, char mStatus, int vehicleId, int exp, Grap
     this->gps = map;
 }
 
-Driver::Driver(int driverId, int age, char mStatus, int vehicleId, int exp) {
+Driver::Driver(int driverId, int age, char mStatus, int exp, int vehicleId) {
     numberOfcustomers=0;
     this->driverId=driverId;
     this->age=age;
@@ -25,8 +25,14 @@ Driver::Driver(int driverId, int age, char mStatus, int vehicleId, int exp) {
 
 void Driver::drive() {
     BFS bfs = BFS(gps);
-    Coordinate* c = bfs.getNextInPath(myTrip.getStart(), myTrip.getEnd());
-    myTrip.updateStartPoint(c);
+    Coordinate *c;
+    do {
+        if(myTrip.getStart()->equalTo(myTrip.getEnd())) {
+            break;
+        }
+        c  = bfs.getNextInPath(myTrip.getStart(), myTrip.getEnd());
+        myTrip.updateStartPoint(c);
+    } while(myTrip.getStart() != myTrip.getEnd());
 }
 
 

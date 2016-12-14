@@ -1,5 +1,7 @@
 
 #include "GameFlow.h"
+#include "StandardCab.h"
+#include "LuxuryCab.h"
 #include <iostream>
 #include <boost/lexical_cast.hpp>
 #include <boost/token_functions.hpp>
@@ -8,11 +10,14 @@
 typedef boost::tokenizer<boost::char_separator<char>> tokenizer;
 
 void GameFlow::initialize() {
-    char obstacles;
-    string size;
+    string obstacles;
+    string size1;
+    string size2;
+
     //To be used later as graph size
-    cin >> size;
-    Graph *grid = createGraph(size);
+    cin >> size1;
+    cin >> size2;
+    Graph *grid = createGraph(size1, size2);
 
     //Checks for obstacles
     cin >> obstacles;
@@ -27,6 +32,7 @@ void GameFlow::initialize() {
     }
     BFS *bfs = new BFS(grid);
     this->city = City(bfs);
+    tc = TaxiCenter(grid);
 }
 
 void GameFlow::run() {
@@ -34,7 +40,7 @@ void GameFlow::run() {
     int action1;
     int driverId;
     std::string s;
-    TaxiCenter tc = city.getTaxiCenter();
+
 
     while (run) {
         cin >> action1;
@@ -54,8 +60,9 @@ void GameFlow::run() {
                 break;
             }
             case 3: {
-                //Create vehicle
-                //Sending vehicle to matching driver (as taxi)
+                cin >> s;
+                Taxi t = createTaxi(s);
+                tc.addTaxi(t);
                 break;
             }
             case 4: {
@@ -103,10 +110,12 @@ Trip GameFlow::createTrip(string s) {
     int i = 0;
     int place = 0;
     int value[13];
-    while(place < 8) {
-        value[place] = boost::lexical_cast<int>(s[i]);
+
+    boost::char_separator<char> sep{","};
+    tokenizer tok{s, sep};
+    for (const auto &t : tok) {
+        value[place] = boost::lexical_cast<int>(t);
         place++;
-        i+=2;
     }
     Trip trip = Trip(value[0],value[1], value[2], value[3],
                      value[4], value[5], value[6]);
@@ -114,15 +123,28 @@ Trip GameFlow::createTrip(string s) {
 }
 
 Coordinate* GameFlow::createCoordinate(string s) {
-    int x = s[0];
-    int y = s[2];
+    int x = boost::lexical_cast<int>(s[0]);
+    int y = boost::lexical_cast<int>(s[2]);
     Coordinate* point = new Point(x, y);
     return point;
 }
 
-Graph* GameFlow::createGraph(string s) {
-    int x = boost::lexical_cast<int>(s[0]);
-    int y = boost::lexical_cast<int>(s[2]);
+Graph* GameFlow::createGraph(string s, string s1) {
+    int x = boost::lexical_cast<int>(s);
+    int y = boost::lexical_cast<int>(s1);
     Graph *graphPointer = new Grid(x, y);
     return graphPointer;
+}
+
+Taxi GameFlow::createTaxi(string s) {
+    int id = boost::lexical_cast<int>(s[0]);
+    int type = boost::lexical_cast<int>(s[2]);
+    if(type == 1) {
+         StandardCab t = StandardCab(id, s[4], s[6]);
+        return t;
+    } else {
+         LuxuryCab t = LuxuryCab(id, s[4], s[6]);
+        return t;
+    }
+
 }

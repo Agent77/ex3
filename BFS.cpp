@@ -9,10 +9,10 @@ using namespace std;
  */
 
 
-BFS::BFS(Graph* g) {
+BFS::BFS(Graph* g) { //TODO when initializing source, visit it.
     //this->source =  g->getNode(sLoc);
-    (*(source)).visit();
-    (*(source)).setPrev(*source);
+    //(*(source)).visit();
+    //(*(source)).setPrev(*source);
     //this->destination = g->getNode(dLoc);
     this->graph = g;
 }
@@ -59,13 +59,17 @@ void BFS::getPath() {
     myDeque.push(source);
     newSource = source;
     do {
+
         visitNeighbors(newSource);
         if (!myDeque.empty()) {
             myDeque.pop();
         }
         newSource = myDeque.front();
-        c1 = (*(newSource)).getMyLocation();
-        c2 = (*(destination)).getMyLocation();
+        if(newSource == NULL) {
+        break;
+        }
+            c1 = (*(newSource)).getMyLocation();
+            c2 = (*(destination)).getMyLocation();
     } while(!(c2->equalTo(c1)));
 //    BFS::PrintPath(source, destination);
 }
@@ -101,11 +105,20 @@ Node* BFS::getSource() {
 
 Coordinate* BFS::getNextInPath(Coordinate* sLoc, Coordinate* dLoc){
     this->source =  graph->getNode(sLoc);
+    this->source->visit();
+    //this->source->setPrev(*source);
     this->destination = graph->getNode(dLoc);
     this->getPath();
     Node *node= getDest();
-    while (node->getPrev()!=getSource()){
-        node=node->getPrev();
+    Node* previousNode;
+    while (node != source && node->getPrev()!=NULL){
+     /*   if(node->getMyLocation()->equalTo(source->getMyLocation())) {
+            break;
+        }*/
+        previousNode = node;
+        node = node->getPrev();
+
+
     }
-    return node->getMyLocation();
+    return previousNode->getMyLocation();
 }

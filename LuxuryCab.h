@@ -6,8 +6,18 @@
 #define EX3_LUXURYCAB_H
 
 
-class LuxuryCab {
+#include "Taxi.h"
 
+class LuxuryCab: public Taxi {
+public:
+    LuxuryCab(int id, char type, char c){};
+
+    void updateKms(){};
+    int getSpeed(){};
+    void getManu(){};
+    int getTariff(){};
+    int getId() {};
+    int getKms(){};
 };
 
 

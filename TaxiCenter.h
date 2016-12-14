@@ -21,6 +21,9 @@ private:
     Graph* map;
 public:
     TaxiCenter();
+    TaxiCenter(Graph* map1) {
+        map = map1;
+    };
     Driver findClosestDriver(Trip t);
     void addDriver(int driverId, int age, char mStatus, int vehicleId, int exp);
         void setLocation(int index, Point location);
@@ -28,6 +31,7 @@ public:
     void addTrip(Trip t) {
         trips.push_back(t);
     };
+    void addTaxi(Taxi t);
     void addDriver(Driver d);
     void updateMeters();
     int checkDestinations();

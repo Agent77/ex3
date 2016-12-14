@@ -6,26 +6,25 @@
 #include "BFS.h"
 
 class Taxi {
-private:
+protected:
     BFS* gps;
     int cabId;
     int kmPassed;
-    int manufacturer;
-    int color;
+    char manufacturer;
+    char color;
     int tariff;
     int speed;
-    bool luxury;
 
 public:
     Taxi();
-    Taxi(int id, int lux, char type, char color);
-    ~Taxi();
-    void updateKms();
-    int getSpeed();
-    void getManu();
-    int getTariff();
-    int getId();
-    int getKms(){};
+    Taxi(int id, char type, char c);
+    //~Taxi();
+    virtual void updateKms();
+    virtual int getSpeed();
+    virtual void getManu();
+    virtual int getTariff();
+    virtual int getId();
+    virtual int getKms(){};
 };
 
 

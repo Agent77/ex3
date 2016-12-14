@@ -22,11 +22,14 @@ private:
 public:
     Driver();
     ~Driver();
-    Driver(int driverId, int age, char mStatus, int vehicleId, int exp, Graph* gps);
-    Driver(int driverId, int age, char mStatus, int vehicleId, int exp);
+    Driver(int driverId, int age, char mStatus, int exp, int vehicleId, Graph* gps);
+    Driver(int driverId, int age, char mStatus, int exp, int vehicleId);
     int getAge();
     int getvehicleId() { return vehicleId;};
     int getDriverId();
+    int getExp() {
+        return exp;
+    };
     double getSatisfaction();
     Taxi getTaxi();
     Trip getTrip();

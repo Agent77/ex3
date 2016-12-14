@@ -11,7 +11,7 @@ Driver TaxiCenter::findClosestDriver(Trip t) {
 }
 
 void TaxiCenter::addDriver(Driver d) {
-    addDriver(d.getDriverId(), d.getAge(), d.getMaritalStatus(), d.getvehicleId(), 0);
+    addDriver(d.getDriverId(), d.getAge(), d.getMaritalStatus(), d.getExp(), d.getvehicleId());
             //driverId, int age, char mStatus, int vehicleId, int exp
 }
 
@@ -46,7 +46,7 @@ void TaxiCenter::requestDriverLocation(int driverId){
     while((*(iter)).getDriverId() != driverId) {
         iter++;
     }
-    cout<<(*(iter)).getTrip().getStart()<<endl;
+    cout<<*(*(iter)).getTrip().getStart()<<endl;
 }
 
 int TaxiCenter::assignDrivers() {
@@ -58,11 +58,11 @@ int TaxiCenter::assignDrivers() {
 
     while(taxi != taxis.end()) {
         Taxi currentTaxi = *taxi;
-        while((*(driver)).getvehicleId() != (*(taxi)).getId()) {
+        while((*(driver)).getvehicleId() != (currentTaxi).getId()) {
             driver++;
         }
-        Driver driverMatch = *driver;
-        driverMatch.setTaxi(*taxi);
+        Driver* driverMatch = &(*(driver));
+        driverMatch->setTaxi(*taxi);
         taxi++;
     }
     taxis.clear();
@@ -88,5 +88,10 @@ void TaxiCenter::driveAll() {
     vector<Driver>::iterator currentDriver = drivers.begin();
     while(currentDriver != drivers.end()) {
         (*(currentDriver)).drive();
+        currentDriver++;
     }
+}
+
+void TaxiCenter::addTaxi(Taxi t) {
+    taxis.push_back(t);
 }
